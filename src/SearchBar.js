@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SearchBar extends Component {
+export default class SearchBar extends Component {
   constructor(props){
     super(props);
 
@@ -10,20 +10,22 @@ class SearchBar extends Component {
 
   render(){
       return(
-        <div className="searchbar">
-          <input
-            value={this.state.term}
-            onChange={event => this.onInputChange(event.target.value)}
-            />
+        <div id="searchbar">
+          <form>
+            <input
+              name='city'
+              value={this.state.term}
+              onChange={event => this.onInputChange(event.target.value)}
+              />
+            </form>
         </div>
-      )
-  };
+      );
+  }
 
   onInputChange(term){
     this.setState({term});
-    this.props.onSearchTermChange(term);
+      // this.props.onSearchTermChange(term);
+      console.log(this.state.term);
   }
 
 }
-
-export default SearchBar;
