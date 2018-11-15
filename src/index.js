@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom'
 import SearchBar from './SearchBar'
 
@@ -13,48 +13,27 @@ class WeatherApp extends React.Component {
       term: '',
       error: null,
       isLoaded: false,
-      items: []
+      items: '',
     };
   }
 
 
-  componentDidMount() {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=New+York&units=metric&appid=${API_KEY}`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result
-          });
-          console.log(result);
-
-
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-    }
-
   render(){
-    return(
-      <div>
-          Weather app
-          <ul>
-            <li><a href="">Today</a></li>
-            <li><a href="">5-day forcast</a></li>
-          </ul>
-          <SearchBar />
 
-      </div>
-    );
+      return(
+        <div>
+            Weather app
+            <ul>
+              <li><a href="">Today</a></li>
+              <li><a href="">5-day forcast</a></li>
+            </ul>
+
+            <SearchBar />
+
+
+        </div>
+      );
+
   }
 }
 
