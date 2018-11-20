@@ -64,7 +64,6 @@ class WeatherApp extends React.Component {
 
             <SearchBar onSearchTermChange={this.componentDidMount}/>
 
-
         </div>
       );
 
