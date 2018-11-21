@@ -12,6 +12,7 @@ class WeatherApp extends React.Component {
       error: null,
       isLoaded: false,
       items: '',
+      weather: '',
     };
 
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -29,12 +30,14 @@ class WeatherApp extends React.Component {
           (result) => {
             this.setState({
               isLoaded: true,
-              items: result
+              items: result,
+              weather: result.weather[0],
             });
             console.log('Results of API Call');
             console.log(result);
             console.log('Results of State');
             console.log(this.state.items);
+            console.log(this.state.weather);
 
 
           },
@@ -52,7 +55,13 @@ class WeatherApp extends React.Component {
     }
 
 
+
+
   render(){
+    {/* Store Icon in const to be used in image url */}
+    const icon = this.state.weather.icon;
+    {/* Image URL to use as src to display icon for current weather condition */}
+    const url = `http://openweathermap.org/img/w/${icon}.png`;
 
       return(
         <div>
@@ -63,6 +72,14 @@ class WeatherApp extends React.Component {
             </ul>
 
             <SearchBar onSearchTermChange={this.componentDidMount}/>
+
+              {/* Only display image if state has stored icon value */}
+                {this.state.weather.icon &&
+                  <img src={url} />
+                } <br />
+            {this.state.items.name}<br />
+            {this.state.weather.description}
+
 
 
         </div>
