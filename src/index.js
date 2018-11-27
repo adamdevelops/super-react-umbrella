@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import SearchBar from './SearchBar'
+import './index.css';
 
 const API_KEY = '992e628de9fb7c2d45c8a82dc61259fc';
 
@@ -13,6 +14,8 @@ class WeatherApp extends React.Component {
       isLoaded: false,
       items: '',
       weather: '',
+      temp: '',
+      tempF: '',
     };
 
     this.componentDidMount = this.componentDidMount.bind(this)
@@ -32,12 +35,15 @@ class WeatherApp extends React.Component {
               isLoaded: true,
               items: result,
               weather: result.weather[0],
+              temp: result.main.temp,
+              tempF: Math.round((((result.main.temp * 9)/5) + 32)),
             });
             console.log('Results of API Call');
             console.log(result);
             console.log('Results of State');
             console.log(this.state.items);
             console.log(this.state.weather);
+            console.log(this.state.tempF);
 
 
           },
@@ -58,29 +64,33 @@ class WeatherApp extends React.Component {
 
 
   render(){
-    {/* Store Icon in const to be used in image url */}
+    /* Store Icon in const to be used in image url */
     const icon = this.state.weather.icon;
-    {/* Image URL to use as src to display icon for current weather condition */}
+    /* Image URL to use as src to display icon for current weather condition */
     const url = `http://openweathermap.org/img/w/${icon}.png`;
 
       return(
-        <div>
-            Weather app
-            <ul>
+        <div className="app">
+            <h1 className="nopad">Weather app</h1>
+            {/*<ul>
               <li><a href="">Today</a></li>
               <li><a href="">5-day forcast</a></li>
-            </ul>
+            </ul> */}
+
+            <h2>Today</h2>
 
             <SearchBar onSearchTermChange={this.componentDidMount}/>
 
-              {/* Only display image if state has stored icon value */}
-                {this.state.weather.icon &&
-                  <img src={url} />
-                } <br />
-            {this.state.items.name}<br />
-            {this.state.weather.description}
-
-
+            {/* Only display weather info for city when data is loaded */}
+            { this.state.items &&
+              <div>
+                <img src={url} className="icon"/>
+                <br />
+                {this.state.tempF} &deg; F<br />
+                {this.state.items.name}<br />
+                {this.state.weather.description}
+              </div>
+            }
 
         </div>
       );
