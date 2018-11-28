@@ -27,8 +27,8 @@ export default class SearchBar extends Component {
       return(
         <div id="searchbar">
           <form onSubmit={this.handleSubmit}>
-            <input name='city' value={this.state.term} placeholder = 'City...' onChange={this.handleChange} />
-            <button>Get Weather</button>
+            <input className="searchbar" name='city' value={this.state.term} placeholder = 'City...' onChange={this.handleChange} />
+            <button className="searchbar_btn">Get Weather</button>
             </form>
         </div>
       );
