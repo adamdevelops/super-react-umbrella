@@ -17,6 +17,7 @@ export default class SearchBar extends Component {
   }
 
   handleSubmit(event) {
+    // Used for debugging
     alert('A city was submitted: ' + this.state.term);
     this.props.onSearchTermChange(this.state.term);
     event.preventDefault();
@@ -27,7 +28,7 @@ export default class SearchBar extends Component {
       return(
         <div id="searchbar">
           <form onSubmit={this.handleSubmit}>
-            <input className="searchbar" name='city' value={this.state.term} placeholder = 'City...' onChange={this.handleChange} />
+            <input className="searchbar" name='city' value={this.state.term} placeholder = 'Enter a state...' onChange={this.handleChange} />
             <button className="searchbar_btn">Get Weather</button>
             </form>
         </div>

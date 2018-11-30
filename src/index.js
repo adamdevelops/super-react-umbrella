@@ -55,6 +55,8 @@ class WeatherApp extends React.Component {
               isLoaded: false,
               error
             });
+
+
           }
         )
       }
@@ -71,7 +73,7 @@ class WeatherApp extends React.Component {
 
       return(
         <div className="app">
-            <h1 className="nopad">Weather app</h1>
+            <h1 className="nopad"> Weather or Not </h1>
             {/*<ul>
               <li><a href="">Today</a></li>
               <li><a href="">5-day forcast</a></li>
@@ -83,12 +85,13 @@ class WeatherApp extends React.Component {
 
             {/* Only display weather info for city when data is loaded */}
             { this.state.items &&
-              <div>
-                <img src={url} className="icon"/>
+              <div className="weather_info">
+                <img src={url} className="icon" alt="Weather forecast icon"/>
                 <br />
-                {this.state.tempF} &deg; F<br />
-                {this.state.items.name}<br />
-                {this.state.weather.description}
+                <div className="weather_text">
+                {this.state.tempF} &deg; F <br />
+                {this.state.weather.description}<br />
+                {this.state.items.name}</div>
               </div>
             }
 

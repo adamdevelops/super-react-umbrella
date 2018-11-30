@@ -31,6 +31,7 @@ code {
 .icon{
   height: 200px;
   width: 200px;
+
 }
 
 .searchbar{
@@ -45,4 +46,9 @@ code {
   color: white;
   border-radius: 12px;
   border:none;
+}
+
+.weather_info{
+  font-size: 1.5rem;
+  font-weight: bold;
 }
