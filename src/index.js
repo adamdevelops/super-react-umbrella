@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import SearchBar from './SearchBar'
+import WeatherAPI from './weatherDisplay'
 import './index.css';
 
 const API_KEY = '992e628de9fb7c2d45c8a82dc61259fc';
@@ -94,6 +95,8 @@ class WeatherApp extends React.Component {
                 {this.state.items.name}</div>
               </div>
             }
+
+            <WeatherAPI />
 
         </div>
       );
