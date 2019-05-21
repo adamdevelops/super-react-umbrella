@@ -70,13 +70,15 @@ export default class WeatherAPI extends Component{
     const weather = this.state.items;
 
     const singledayForcast = weather.map((w) =>
-      <div className="weather_info">
-        <img src={`http://openweathermap.org/img/w/${w.weather[0].icon}.png`} className="icon" alt="Weather forecast icon"/>
-          <div className="weather_text">
-            {w.main.temp} &deg; F <br />
-            {w.weather[0].description}<br />
-          </div>
-      </div>
+      <td>
+        <div className="weather_info">
+          <img src={`http://openweathermap.org/img/w/${w.weather[0].icon}.png`} className="icon" alt="Weather forecast icon"/>
+            <div className="weather_text">
+              {w.main.temp} &deg; F <br />
+              {w.weather[0].description}<br />
+            </div>
+        </div>
+      </td>
   );
 
 
@@ -84,7 +86,11 @@ export default class WeatherAPI extends Component{
       <div>
       <h1>Forecast</h1>
 
-      {singledayForcast}
+      <table>
+        <tr> {singledayForcast} </tr>
+      </table>
+
+
 
       </div>
 
